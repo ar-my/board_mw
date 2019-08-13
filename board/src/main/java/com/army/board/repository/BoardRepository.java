@@ -1,11 +1,15 @@
 package com.army.board.repository;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import com.army.board.common.ContentBoard;
+import com.army.board.entity.ContentBoardEntitiy;
 
-public interface BoardRepository extends JpaRepository <ContentBoard, Long> {
+public interface BoardRepository<T> extends JpaRepository <ContentBoardEntitiy, Long> {
+
+	Page<ContentBoardEntitiy> findAll(Pageable pageable);
 	
 }

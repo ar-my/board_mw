@@ -1,0 +1,33 @@
+<configuration>
+	<!-- console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/svc/log/logback.log</file>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+          <Pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</Pattern>
+        </layout>
+      </appender>
+    <!--  <appender name="invalidRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender"
+     	<file>/svc/log/log.log</file>
+     	<encoder>
+     		<Pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</Pattern>
+     	</encoder>
+     	요일이 바뀌면서 과거 로그 파일 이름으로 변경. ex) log.log -> log.190808
+     	 <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPoliy">
+     	 <fileNamePattern>/svc/log.%d{yyyyMMdd}</fileNamePattern>
+     	 10MB를 초과하면 새로운 번호를 붙여서 새로운 로그파일 생성. ex)log.log.190808.2.log
+     	 <maxFileSize>10MB</maxFileSize>
+     	 </rollingPolicy>
+     	 </appender> -->
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
